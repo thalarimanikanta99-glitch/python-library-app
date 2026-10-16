@@ -1,55 +1,40 @@
----
+
 services:
   db:
     image: manikantathalari/pyapp:database_image
-    deploy:
-      replicas: 1
     ports:
       - "3306:3306"
     networks:
-      - mynetwork
+      - mynet
 
   auth_service:
     image: manikantathalari/pyapp:auth_image
-    deploy:
-      replicas: 1 
     ports:
       - "5001:5001"
     networks:
-      - mynetwork
+      - mynet
 
-  books_service:
+  book_service:
     image: manikantathalari/pyapp:book_image
-    deploy:
-      replicas: 1
     ports:
       - "5002:5002"
     networks:
-      - mynetwork
+      - mynet
 
   borrow_service:
     image: manikantathalari/pyapp:borrow_image
-    deploy:
-      replicas: 1
     ports:
       - "5003:5003"
     networks:
-      - mynetwork
+      - mynet
 
   frontend:
     image: manikantathalari/pyapp:frontend
-    deploy:
-      replicas: 1
     ports:
       - "5000:5000"
     networks:
-      - mynetwork
-    depends_on:
-      - auth_service
-      - book_service
-      - borrow_service
-    
+      - mynet
 
 networks:
-  mynetwork:
+  mynet:
     driver: overlay
