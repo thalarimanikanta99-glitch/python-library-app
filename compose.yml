@@ -8,7 +8,7 @@ services:
     networks:
       - mynet
 
-  auth:
+  auth_service:
     container_name: auth_service
     build: ./auth/
     ports:
@@ -16,7 +16,7 @@ services:
     networks:
       - mynet
 
-  books:
+  books_service:
     container_name: book_service
     build: ./book/
     ports:
@@ -24,7 +24,7 @@ services:
     networks:
       - mynet
 
-  borrow:
+  borrow_service:
     container_name: borrow_service
     build: ./borrow/
     ports:
@@ -32,7 +32,7 @@ services:
     networks:
       - mynet
 
-  frontend:
+  frontend_service:
     container_name: frontend
     build: ./
     ports:
