@@ -1,40 +1,35 @@
----
+
 services:
   db:
-    container_name: db
-    build: ./database/
+    image: manikantathalari/pyapp:database_image
     ports:
       - "3306:3306"
     networks:
       - mynet
 
   auth_service:
-    container_name: auth_service
-    build: ./auth/
+    image: manikantathalari/pyapp:auth_image
     ports:
       - "5001:5001"
     networks:
       - mynet
 
   books_service:
-    container_name: book_service
-    build: ./book/
+    image: manikantathalari/pyapp:book_image
     ports:
       - "5002:5002"
     networks:
       - mynet
 
   borrow_service:
-    container_name: borrow_service
-    build: ./borrow/
+    image: manikantathalari/pyapp:borrow_image
     ports:
       - "5003:5003"
     networks:
       - mynet
 
-  frontend_service:
-    container_name: frontend
-    build: ./
+  frontend:
+    image: manikantathalari/pyapp:frontend
     ports:
       - "5000:5000"
     networks:
@@ -42,4 +37,4 @@ services:
 
 networks:
   mynet:
-    driver: bridge
+    driver: overlay
